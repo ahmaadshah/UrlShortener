@@ -19,4 +19,3 @@ public interface PriceRepository extends JpaRepository<Price, Long> {
     Price findByCreationDate(LocalDate date);
 }
 
-// TODO предзаполнить таблицу цен в БД

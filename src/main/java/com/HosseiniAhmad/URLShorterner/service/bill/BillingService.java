@@ -42,5 +42,4 @@ public class BillingService {
         priceRepository.save(price);
     }
 
-    // TODO сделать шедулер для получения значений инфляции и пересчёта стоимости
 }

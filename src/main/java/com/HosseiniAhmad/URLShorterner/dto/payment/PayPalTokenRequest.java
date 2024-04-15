@@ -1,7 +1,6 @@
 package com.HosseiniAhmad.URLShorterner.dto.payment;
 
 import com.HosseiniAhmad.URLShorterner.util.annotation.FormUrlencodedProperty;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -6,12 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -31,15 +29,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain formLoginAndBasicFilterChain(HttpSecurity http, AuthenticationManager manager) throws Exception {
         return http
-                .csrf().disable() // TODO временно отключаем защиту от подделки запросов. Удалить строку после тестов
-//                .authorizeHttpRequests(authorize ->
-//                        authorize.requestMatchers(
-//                                        "/auth/**",
-//                                        "/auth/register",
-//                                        "/error", "/swagger-ui",
-//                                        "/v3/api-docs"
-//                                ).permitAll() // какие url открыть
-//                                .anyRequest().authenticated()) // остальные открыть только для аутентифицированных пользователей
+                .csrf().disable()
+                .authorizeHttpRequests(authorize ->
+                        authorize.requestMatchers(
+                                        "/auth/**",
+                                        "/auth/register",
+                                        "/error", "/swagger-ui",
+                                        "/v3/api-docs"
+                                ).permitAll() // какие url открыть
+                                .anyRequest().authenticated()) // остальные открыть только для аутентифицированных пользователей
                 // Настройка своей формы аутентификации
                 .formLogin(form -> form
                         .loginPage("/auth/login") // страница аутентификации
@@ -64,7 +62,7 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
-        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance(); // TODO временно отулючаем шифрование пароля
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
 
 }

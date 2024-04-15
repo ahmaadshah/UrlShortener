@@ -20,13 +20,9 @@ public class SubscriptionController {
         this.subscriptionService = subscriptionService;
     }
 
-    /**
-     * Эндпоинт, по которому система оплаты подтверждает, что подписка была оплачена
-     *
-     * @param subscriptionId идентификатор подписки
-     */
+
     @GetMapping("/{subscriptionId}/bought")
-    @RolesAllowed(value = { "TECHNICAL", "ADMIN", "REGISTERED"}) // TODO удалить REGISTERED после доработки платёжной системы
+    @RolesAllowed(value = { "TECHNICAL", "ADMIN", "REGISTERED"})
     public void setSubscriptionIsPaid(@PathVariable Long subscriptionId) {
         subscriptionService.setSubscriptionIsPaid(subscriptionId);
     }
