@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bindings</title>
+</head>
+<body>
+<div>
+    <a href="/user/profile">Back to profile</a>
+</div>
+<div>
+    <a href="/user/binding/create">Create binding</a>
+</div>
+
+<h2>Active Bindings</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Short URL</th>
+        <th>Long URL</th>
+        <th>Creation Date</th>
+        <th>Expiry Date</th>
+        <th>Clicks</th>
+        <th>Close</th>
+    </tr>
+    <tr th:each="bind : ${active}">
+        <td th:text="${bind.id}"></td>
+        <td th:text="${bind.shortUrl}"></td>
+        <td th:text="${bind.longUrl}"></td>
+        <td th:text="${bind.creationDate}"></td>
+        <td th:text="${bind.expiryDate}"></td>
+        <td th:text="${bind.clicks}"></td>
+        <td><a th:href="@{/user/binding/{id}/close(id=${bind.id})}">Close</a></td>
+    </tr>
+</table>
+
+<h2>Expired and Closed Bindings</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Short URL</th>
+        <th>Long URL</th>
+        <th>Creation Date</th>
+        <th>Expiry Date</th>
+        <th>Clicks</th>
+        <th>Closed</th>
+    </tr>
+    <tr th:each="bind : ${inactive}">
+        <td th:text="${bind.id}"></td>
+        <td th:text="${bind.shortUrl}"></td>
+        <td th:text="${bind.longUrl}"></td>
+        <td th:text="${bind.creationDate}"></td>
+        <td th:text="${bind.expiryDate}"></td>
+        <td th:text="${bind.clicks}"></td>
+        <td th:text="${bind.closed ? 'Yes' : 'No'}"></td>
+    </tr>
+</table>
+
+<div>
+    <a href="/user/profile">Back to profile</a>
+</div>
+</body>
+</html>
+

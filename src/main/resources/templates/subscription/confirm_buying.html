@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Buy a new subscription</title>
+</head>
+<body>
+<main>
+    <h2>Confirm subscription details</h2>
+    <div>
+        <p><b>The beginning of subscription:</b> <span th:text="${startDate}"></span></p>
+        <p><b>The end of subscription:</b> <span th:text="${endDate}"></span></p>
+        <p><b>Price to pay (EUR):</b> <span th:text = "${price}"></span></p>
+    </div>
+    <form th:action="@{/user/subscription/{id}/confirm(id=${subscriptionId})}" method="get">
+        <button type="submit">Go to payment page</button>
+    </form>
+</main>
+
+<a href="/user/subscription/deny">Deny</a>
+</body>
+</html>

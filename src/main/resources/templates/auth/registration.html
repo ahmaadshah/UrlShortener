@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>User registration form</title>
+</head>
+<body>
+<main>
+    <h1>For registration fill in the form below</h1>
+    <form th:object="${userForm}"
+          th:action="@{/auth/register}"
+          method="post">
+        <div>
+            <label for="username">Username</label>
+            <input id="username" type="text"
+                   th:field="*{username}">
+            <p style="color: red"
+               th:if="${#fields.hasErrors('username')}"
+               th:text="${#strings.listJoin(#fields.errors('username'), ', ')}"></p>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" type="password"
+                   th:field="*{password}">
+            <p style="color: red"
+               th:if="${#fields.hasErrors('password')}"
+               th:text="${#strings.listJoin(#fields.errors('password'), ', ')}"></p>
+        </div>
+        <div>
+            <label for="passwordConfirmation">Password confirmation</label>
+            <input id="passwordConfirmation" type="password"
+                   th:field="*{passwordConfirmation}">
+            <p style="color: red"
+               th:if="${#fields.hasErrors('passwordConfirmation')}"
+               th:text="${#strings.listJoin(#fields.errors('passwordConfirmation'), ', ')}"></p>
+        </div>
+        <div>
+            <label for="email">Email address</label>
+            <input id="email" type="email"
+                   th:field="*{email}">
+            <p style="color: red"
+               th:if="${#fields.hasErrors('email')}"
+               th:text="${#strings.listJoin(#fields.errors('email'), ', ')}"></p>
+        </div>
+        <button type="submit">Submit my data</button>
+    </form>
+</main>
+
+<a href="../../..">Home</a>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscriptions</title>
+</head>
+<body>
+<div>
+    <a href="/user/profile">Back to profile</a>
+</div>
+<div>
+    <a href="/user/subscription/buy">Buy a subscription</a>
+</div>
+
+<h2>Active Subscriptions</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Creation Date</th>
+        <th>Expiry Date</th>
+        <th>Paid</th>
+    </tr>
+    <tr th:each="sub : ${activeSubs}">
+        <td th:text="${sub.id}"></td>
+        <td th:text="${sub.creationDate}"></td>
+        <td th:text="${sub.expiryDate}"></td>
+        <td th:text="${sub.paid ? 'Yes' : 'No'}"></td>
+    </tr>
+</table>
+
+<h2>Unpaid Subscriptions</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Creation Date</th>
+        <th>Expiry Date</th>
+        <th>Pay for a Subscription</th>
+        <th>Delete Unpaid Subscription</th>
+    </tr>
+    <tr th:each="sub : ${notPaidSubs}">
+        <td th:text="${sub.id}"></td>
+        <td th:text="${sub.creationDate}"></td>
+        <td th:text="${sub.expiryDate}"></td>
+        <td><a th:href="@{/user/subscription/{id}/buy(id=${sub.id})}">Pay</a></td>
+        <td><a th:href="@{/user/subscription/{id}/delete(id=${sub.id})}">Delete</a></td>
+    </tr>
+</table>
+
+<h2>Expired Subscriptions</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Creation Date</th>
+        <th>Expiry Date</th>
+    </tr>
+    <tr th:each="sub : ${expiredSubs}">
+        <td th:text="${sub.id}"></td>
+        <td th:text="${sub.creationDate}"></td>
+        <td th:text="${sub.expiryDate}"></td>
+    </tr>
+</table>
+
+<div>
+    <a href="/user/profile">Back to profile</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>User registration form</title>
+</head>
+<body>
+<main>
+    <h1>Create your short URL</h1>
+    <form th:object="${bindingForm}"
+          th:action="@{/user/binding/create}"
+          method="post">
+        <div>
+            <label for="longUrl">Original Url</label>
+            <input id="longUrl" type="text"
+                   th:field="*{longUrl}">
+            <p style="color: red"
+               th:if="${#fields.hasErrors('longUrl')}"
+               th:text="${#strings.listJoin(#fields.errors('longUrl'), ', ')}"></p>
+        </div>
+        <div>
+            <label for="expiryDate">Expiry date</label>
+            <input id="expiryDate" type="date"
+                   th:field="*{expiryDate}">
+            <p style="color: red"
+               th:if="${#fields.hasErrors('expiryDate')}"
+               th:text="${#strings.listJoin(#fields.errors('expiryDate'), ', ')}"></p>
+        </div>
+        <button type="submit">Create short url</button>
+    </form>
+</main>
+
+<a href="/user/binding">Cancel</a>
+</body>
+</html>
