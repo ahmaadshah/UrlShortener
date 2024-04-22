@@ -1,4 +1,4 @@
-package service;
+package com.HosseiniAhmad.URLShorterner.service;
 
 import com.HosseiniAhmad.URLShorterner.dto.user.UserRegistrationRequestDto;
 import com.HosseiniAhmad.URLShorterner.dto.user.UserResponseDto;
@@ -6,21 +6,19 @@ import com.HosseiniAhmad.URLShorterner.mapper.UserMapper;
 import com.HosseiniAhmad.URLShorterner.model.entity.user.Role;
 import com.HosseiniAhmad.URLShorterner.model.entity.user.User;
 import com.HosseiniAhmad.URLShorterner.repository.UserRepository;
-import com.HosseiniAhmad.URLShorterner.service.UserService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-
 @ExtendWith(MockitoExtension.class)
-public class UserServiceTest {
-
+class UserServiceTest { // TODO перенёс тест в правильное место. Допишите остальные тесты и тесты к остальным сервисам тоже.
     @Mock
     private UserRepository userRepository;
     @Mock
@@ -31,11 +29,26 @@ public class UserServiceTest {
 
     @BeforeEach
     void setUp() {
-        Mockito.reset(userRepository);
+    }
+
+    @AfterEach
+    void tearDown() {
     }
 
     @Test
-    public void testCreateUser() {
+    void getAuthenticatedUser() {
+    }
+
+    @Test
+    void updateUserCredentials() {
+    }
+
+    @Test
+    void setEmailConfirmation() {
+    }
+
+    @Test
+    void createUser() {
         UserRegistrationRequestDto requestDto = new UserRegistrationRequestDto();
         requestDto.setUsername("testUser");
         requestDto.setEmail("test@example.com");
@@ -55,5 +68,7 @@ public class UserServiceTest {
         verify(userRepository, times(1)).save(any(User.class));
     }
 
-
+    @Test
+    void deleteUser() {
+    }
 }

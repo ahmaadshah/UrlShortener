@@ -48,7 +48,7 @@ class UserViewControllerTest {
     private UrlService urlService;
 
 
-    @BeforeEach
+    @BeforeEach // TODO пустые методы во всех тестах удалите
     void setUp() {
     }
 
@@ -58,7 +58,7 @@ class UserViewControllerTest {
 
     @Test
     void getProfile() throws Exception {
-        UserResponseDto userResponseDto = new UserResponseDto(
+        UserResponseDto userResponseDto = new UserResponseDto( // TODO повторющийся код создания dto вынесите из тестов в константу в отдельный класс TestData
                 1L,
                 "test@gmail.com",
                 "Test",
@@ -96,7 +96,7 @@ class UserViewControllerTest {
                 Role.ROLE_REGISTERED,
                 urlBindings);
         when(userService.getAuthenticatedUser()).thenReturn(userResponseDto);
-        SubscriptionResponseDto subscriptionResponseDto = new SubscriptionResponseDto(
+        SubscriptionResponseDto subscriptionResponseDto = new SubscriptionResponseDto( // TODO создание всех тестовых данных вынесите в отдельный класс
                 1L,
                 LocalDate.now(),
                 LocalDate.now().plusMonths(1),
