@@ -9,8 +9,6 @@ import com.HosseiniAhmad.URLShorterner.service.SubscriptionService;
 import com.HosseiniAhmad.URLShorterner.service.UrlService;
 import com.HosseiniAhmad.URLShorterner.service.UserService;
 import com.HosseiniAhmad.URLShorterner.service.bill.BillingService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -47,14 +45,6 @@ class UserViewControllerTest {
     @MockBean
     private UrlService urlService;
 
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
 
     @Test
     void getProfile() throws Exception {
@@ -139,6 +129,7 @@ class UserViewControllerTest {
         mockMvc.perform(get("/user/subscription/deny"))
                 .andExpect(status().is3xxRedirection());
     }
+
     @Test
     void confirmSubscription() throws Exception {
         SubscriptionResponseDto subscription = new SubscriptionResponseDto(

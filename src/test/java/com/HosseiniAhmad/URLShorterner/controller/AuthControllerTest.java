@@ -5,8 +5,6 @@ import com.HosseiniAhmad.URLShorterner.service.SubscriptionService;
 import com.HosseiniAhmad.URLShorterner.service.UrlService;
 import com.HosseiniAhmad.URLShorterner.service.UserService;
 import com.HosseiniAhmad.URLShorterner.service.bill.BillingService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -39,13 +37,6 @@ class AuthControllerTest {
     @MockBean
     private UrlService urlService;
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
 
     //@WithMockUser(roles = "REGISTERED")
     @WithAnonymousUser
@@ -73,17 +64,12 @@ class AuthControllerTest {
     }
 
 
-
     @Test
     void getRegistrationPage_ReturnsRegistrationPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/auth/register"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("auth/registration"));
     }
-
-
-
-
 
 
     @Test
@@ -96,28 +82,13 @@ class AuthControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("auth/registration"));
     }
+
     @Test
     void confirmEmail_ReturnsConfirmationPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/auth/1/email_confirmation"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("user/confirmation"));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -2,8 +2,6 @@ package com.HosseiniAhmad.URLShorterner.repository;
 
 import com.HosseiniAhmad.URLShorterner.model.entity.url.ShortUrl;
 import com.HosseiniAhmad.URLShorterner.model.entity.url.UrlBinding;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
@@ -22,13 +20,6 @@ class UrlBindingRepositoryTest {
     @Autowired
     private UrlBindingRepository urlBindingRepository;
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
 
     @Test
     void findByShortUrlUid() {

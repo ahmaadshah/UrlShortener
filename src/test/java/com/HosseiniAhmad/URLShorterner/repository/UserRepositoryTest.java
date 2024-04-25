@@ -22,15 +22,6 @@ class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-    @BeforeEach
-    void setUp() {
-        // Добавьте код для настройки тестовых данных перед каждым тестом, если это необходимо
-    }
-
-    @AfterEach
-    void tearDown() {
-        // Добавьте код для очистки данных после каждого теста, если это необходимо
-    }
 
     @Test
     void findByUsername() {

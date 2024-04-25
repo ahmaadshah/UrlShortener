@@ -1,8 +1,6 @@
 package com.HosseiniAhmad.URLShorterner.repository;
 
 import com.HosseiniAhmad.URLShorterner.model.entity.bill.Price;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
@@ -22,15 +20,6 @@ class PriceRepositoryTest {
     @Autowired
     private PriceRepository priceRepository;
 
-    @BeforeEach
-    void setUp() {
-        // Добавьте код для настройки тестовых данных перед каждым тестом, если это необходимо
-    }
-
-    @AfterEach
-    void tearDown() {
-        // Добавьте код для очистки данных после каждого теста, если это необходимо
-    }
 
     @Test
     void findLatestPriceBeforeToday() {
